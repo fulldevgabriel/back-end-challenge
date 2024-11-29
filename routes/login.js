@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../dbConnection");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 router.post("/login", (req, res) => {
     const {userEmail, userPass} = req.body;
@@ -35,8 +36,19 @@ router.post("/login", (req, res) => {
             }
 
             if (isMatch) {
+                const secret = "KJBJHNknlkkl414214kj"
+                const userId = result[0].id
+
+                const payload = {
+                    id: userId,
+                    email: userEmail
+                }
+
+                const token = jwt.sign(payload, secret, { expiresIn: "1h" });
+                
                 return res.status(200).send({
-                    mensagem: "Login bem-sucedido!"
+                    mensagem: "Login bem-sucedido!",
+                    token: token
                 });
             } else {
                 return res.status(400).send({
