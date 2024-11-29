@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require("../dbConnection");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 router.post("/login", (req, res) => {
     const {userEmail, userPass} = req.body;
@@ -36,7 +37,7 @@ router.post("/login", (req, res) => {
             }
 
             if (isMatch) {
-                const secret = "KJBJHNknlkkl414214kj"
+                const secret = process.env.JWT_TOKEN;
                 const userId = result[0].id
 
                 const payload = {
