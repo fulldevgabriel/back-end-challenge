@@ -23,3 +23,63 @@ Clone este repositório para a sua máquina local:
 
 ```bash
 git clone https://github.com/seu-usuario/seu-repositorio.git
+```
+
+### 2. Instalar as Dependências
+Navegue até a pasta do projeto e instale as dependências utilizando o npm (Node Package Manager):
+
+```bash
+npm install
+```
+
+### 3. Configurar o Banco de Dados
+Crie um banco de dados MySQL com o nome desejado. Em seguida, configure o arquivo .env na raiz do projeto com as informações do seu banco de dados. O arquivo .env deve conter:
+
+```bash
+DB_HOST=localhost
+DB_USER=seu_usuario
+DB_PASSWORD=sua_senha
+DB_NAME=nome_do_banco
+JWT_SECRET=sua_chave_secreta
+```
+### 4. Executar a Aplicação
+Inicie o servidor localmente executando o seguinte comando:
+
+```bash
+npm start
+```
+### 5. Testar a API
+A API pode ser testada com ferramentas como Postman ou Insomnia. A seguir, as rotas disponíveis:
+
+- **POST /register:** Rota para cadastro de um novo usuário.
+
+- Parâmetros no corpo da requisição: email, senha.
+- Retorno: Status de sucesso ou erro.
+- 
+- **POST /login:** Rota para login de um usuário existente.
+
+- Parâmetros no corpo da requisição: email, senha.
+- Retorno: JWT de autenticação.
+- 
+- **GET /users:** Rota para consulta de todos os usuários (apenas para usuários autenticados).
+
+- Cabeçalho: Authorization: Bearer <token>
+- Retorno: Lista de usuários cadastrados.
+  
+Exemplo de requisição de cadastro (POST /register):
+
+```bash
+{
+  "name": "usuario",
+  "email": "usuario@exemplo.com",
+  "pass": "senha",
+  "confirmPass": "senha"
+}
+```
+Exemplo de requisição de login (POST /login):
+```bash
+{
+  "userEmail": "usuario@exemplo.com",
+  "userPass": "senha"
+}
+
