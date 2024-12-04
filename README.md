@@ -53,18 +53,17 @@ A API pode ser testada com ferramentas como Postman ou Insomnia. A seguir, as ro
 
 - **POST /register:** Rota para cadastro de um novo usuário.
 
-- Parâmetros no corpo da requisição: email, senha.
-- Retorno: Status de sucesso ou erro.
-- 
+ - Parâmetros no corpo da requisição: email, senha.
+ - Retorno: Status de sucesso ou erro.
+ - 
 - **POST /login:** Rota para login de um usuário existente.
 
-- Parâmetros no corpo da requisição: email, senha.
-- Retorno: JWT de autenticação.
-- 
+ - Parâmetros no corpo da requisição: email, senha.
+ - Retorno: JWT de autenticação. 
 - **GET /users:** Rota para consulta de todos os usuários (apenas para usuários autenticados).
 
-- Cabeçalho: Authorization: Bearer <token>
-- Retorno: Lista de usuários cadastrados.
+ - Cabeçalho: Authorization: Bearer <token>
+ - Retorno: Lista de usuários cadastrados.
   
 Exemplo de requisição de cadastro (POST /register):
 
