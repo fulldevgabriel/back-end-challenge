@@ -43,12 +43,9 @@ router.post("/signup", (req, res) => {
         }
 
 
+        const query = `INSERT INTO usuarios (name, email, pass) VALUES (?, ?, ?)`;
 
-
-
-        const query = `INSERT INTO usuarios (name, email, pass, confirmPass) VALUES (?, ?, ?, ?)`;
-
-        db.query(query, [name, email, passHashed, confirmPass], (err, result) => {
+        db.query(query, [name, email, passHashed], (err, result) => {
             if (err) {
                 console.error(err);
                 return res.status(500).send({ mensagem: "Erro ao salvar o usuário no banco de dados!" });
@@ -61,7 +58,6 @@ router.post("/signup", (req, res) => {
                     name,
                     email,
                     pass,
-                    confirmPass
                 }
             });
         });
